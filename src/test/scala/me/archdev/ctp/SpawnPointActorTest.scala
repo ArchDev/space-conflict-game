@@ -2,6 +2,7 @@ package me.archdev.ctp
 
 import akka.pattern.ask
 import akka.testkit.TestActorRef
+import me.archdev.DefaultTestSpec
 
 class SpawnPointActorTest extends DefaultTestSpec {
 

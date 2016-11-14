@@ -1,18 +1,17 @@
-package me.archdev.ctp
+package me.archdev
 
 import akka.actor.ActorSystem
 import akka.testkit.TestKit
-import org.scalatest.{Matchers, WordSpecLike}
-import org.scalatest.concurrent.ScalaFutures
-
-import scala.concurrent.duration._
 import akka.util.{Timeout => AkkaTimeout}
+import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.{Matchers, WordSpecLike}
 
 import scala.concurrent.Future
+import scala.concurrent.duration._
 import scala.reflect.ClassTag
 
 abstract class DefaultTestSpec extends TestKit(SharedTestResources.actorSystem) with WordSpecLike with ScalaFutures with Matchers with ActorMatchers {
-  private val defaultTimeout = 10 seconds
+  val defaultTimeout = 0.5 seconds
   implicit val akkaDefaultTimeout: AkkaTimeout = AkkaTimeout(defaultTimeout)
 }
 

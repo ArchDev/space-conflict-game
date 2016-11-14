@@ -4,7 +4,7 @@ import akka.actor.Actor
 
 class SpawnPointActor(spawnName: SpawnName) extends Actor {
 
-  var spawnRate: Byte = 0
+  var spawnRate: Int = 0
   var unitsCounter: Long = 0
 
   override def receive: Receive = {
@@ -27,4 +27,11 @@ class SpawnPointActor(spawnName: SpawnName) extends Actor {
   }
 
 }
+
+sealed trait SpawnCommands
+case object SpawnUnits extends SpawnCommands
+case object GetSpawnStatus extends SpawnCommands
+case class SetUnitsSpawnRate(spawnRate: SpawnRate) extends SpawnCommands
+case class SupplySpawn(source: SpawnName, unitsCount: Long) extends SpawnCommands
+case class DefendSpawn(attacker: Player, unitsCount: Long) extends SpawnCommands
 
